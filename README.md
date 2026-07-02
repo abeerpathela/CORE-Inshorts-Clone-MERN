@@ -1,156 +1,220 @@
-# 📰 Inshorts Clone - Enhanced Edition
+# 📰 CORE-Inshorts-Clone-MERN
 
-A modern, feature-rich news application inspired by Inshorts, delivering news in 60 words or less!
+A full-stack **Inshorts-inspired news application** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. The application delivers concise news articles through a clean, responsive interface, allowing users to browse the latest updates across multiple categories with a fast and intuitive reading experience.
 
-## ✨ Features
+---
 
-### 🎨 Modern UI/UX
-- **Complete Redesign**: Beautiful, clean, and premium look with smooth animations
-- **Dark/Light Mode**: Toggle between light and dark themes
-- **Responsive Design**: Perfectly optimized for mobile, tablet, and desktop
-- **Card-based Layout**: Easy to read news cards with hover effects
+# ✨ Features
 
-### 🔍 Enhanced Functionality
-- **Search**: Search news by title, description, or author
-- **Category Filtering**: Filter news by categories (Sports, Entertainment, Politics, etc.)
-- **Favorites**: Save your favorite articles (stored in localStorage)
-- **Infinite Scroll**: Load more news as you scroll
-- **Pagination**: Backend-supported pagination for efficient data fetching
+## 👤 User Features
 
-### 🛡️ Improved Backend
-- **Better Error Handling**: Proper error messages and status codes
-- **Environment Variables**: Secure configuration management
-- **API Enhancements**: Search, category filtering, and proper pagination support
-- **Database Optimization**: Efficient querying with MongoDB
+* Secure User Authentication
+* Browse Latest News
+* Category-wise News Feed
+* Search News Articles
+* Bookmark Articles
+* Responsive Reading Experience
+* User Profile Management
+* Infinite Scroll / Pagination
 
-### ⚡ Performance & Quality
-- **Loading States**: Skeleton loaders and loading indicators
-- **Empty States**: User-friendly messages for empty results
-- **Code Organization**: Clean, modular, and reusable code
-- **Centralized State Management**: React Context for state management
+## ⚙️ Core Features
 
-## 🚀 Getting Started
+* JWT Authentication
+* RESTful APIs
+* Responsive UI
+* Protected Routes
+* Error Handling
+* Environment Variable Configuration
+* Optimized Backend Architecture
+* Clean and Modular Codebase
 
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-- MongoDB (local or cloud instance)
+---
 
-### Installation
+# 🛠 Tech Stack
 
-#### 1. Backend Setup
-```bash
-# Navigate to backend directory
-cd Backend
+## Frontend
 
-# Install dependencies
-npm install
+* React.js
+* JavaScript
+* HTML5
+* CSS3 / Tailwind CSS (if applicable)
+* Axios
 
-# Create a .env file in Backend directory
-# Add your MongoDB URI:
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-PORT=8000
+## Backend
 
-# Start the server
-npm start
-```
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* bcrypt
 
-#### 2. Frontend Setup
-```bash
-# Navigate to frontend directory
-cd Frontend
+---
 
-# Install dependencies
-npm install
+# 📂 Project Structure
 
-# (Optional) Create a .env file in Frontend directory
-REACT_APP_API_URL=http://localhost:8000
-
-# Start the development server
-npm start
-```
-
-### Usage
-1. Open your browser and visit `http://localhost:3000`
-2. Explore the news articles!
-3. Use the search bar to find specific news
-4. Click on categories to filter news
-5. Toggle dark/light mode for comfortable reading
-6. Click the heart icon to save articles to favorites
-
-## 📁 Project Structure
-
-```
-Inshorts-Clone/
-├── Backend/
-│   ├── connection/
-│   │   └── db.js
-│   ├── constant/
-│   │   └── data.js
-│   ├── controller/
-│   │   └── news-controller.js
-│   ├── model/
-│   │   └── news.js
-│   ├── routes/
-│   │   └── Route.js
-│   ├── index.js
-│   ├── default.js
+```text
+CORE-Inshorts-Clone-MERN
+│
+├── Frontend/
+│   ├── src/
+│   ├── public/
 │   └── package.json
-└── Frontend/
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Article.jsx
-    │   │   ├── Articles.jsx
-    │   │   ├── Header.jsx
-    │   │   └── InfoHeader.jsx
-    │   ├── service/
-    │   │   └── api.js
-    │   ├── App.js
-    │   └── index.js
-    └── package.json
+│
+├── Backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── config/
+│   └── package.json
+│
+└── README.md
 ```
 
-## 🔧 API Endpoints
+---
 
-### Get News
+# 🚀 Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/CORE-Inshorts-Clone-MERN.git
+
+cd CORE-Inshorts-Clone-MERN
 ```
-GET /news?page=0&size=5&category=sports&search=cricket
+
+---
+
+## Backend Setup
+
+```bash
+cd Backend
+npm install
 ```
 
-### Get Categories
+Create a `.env` file.
+
+Example:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+NEWS_API_KEY=your_news_api_key
 ```
-GET /categories
+
+Start the backend:
+
+```bash
+npm start
 ```
 
-## 📱 Screenshots
+---
 
-> 📸 Add screenshots here to showcase the app!
+## Frontend Setup
 
-## 🎯 Tech Stack
+```bash
+cd Frontend
+npm install
+npm run dev
+```
 
-### Frontend
-- React 17
-- Material-UI (MUI)
-- React Infinite Scroll
-- Axios
+---
 
-### Backend
-- Node.js
-- Express
-- MongoDB
-- Mongoose
+# 🔐 Environment Variables
 
-## 🤝 Contributing
+Configure the following:
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+* MongoDB Connection URI
+* JWT Secret
+* News API Key (if applicable)
+* Client URL
 
-## 📄 License
+---
 
-This project is open source and available under the [MIT License](LICENSE).
+# 📸 Screenshots
 
-## 🙏 Acknowledgements
+Add screenshots after deployment.
 
-- Inspired by [Inshorts](https://inshorts.com/)
-- Built with ❤️ using React and Node.js
+* Home Feed
+* Category Page
+* News Details
+* Bookmarks
+* User Profile
+* Mobile View
+
+---
+
+# 📡 API Overview
+
+Example endpoints:
+
+```text
+POST   /api/auth/register
+POST   /api/auth/login
+
+GET    /api/news
+GET    /api/news/:id
+GET    /api/news/category/:category
+
+POST   /api/bookmarks
+GET    /api/bookmarks
+DELETE /api/bookmarks/:id
+
+GET    /api/user/profile
+```
+
+---
+
+# 📱 Responsive Design
+
+* Desktop
+* Tablet
+* Mobile
+
+---
+
+# 🔒 Security
+
+* JWT Authentication
+* Protected Routes
+* Password Hashing
+* Input Validation
+* Environment Variables
+* Robust Error Handling
+
+---
+
+# 🚀 Future Improvements
+
+* Personalized News Feed
+* Trending Topics
+* Dark Mode
+* Push Notifications
+* Multi-language Support
+* Reading History
+* AI-based News Recommendations
+* Offline Reading
+
+---
+
+# 🤝 Contributing
+
+Contributions, bug reports, and feature requests are welcome.
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+---
+
+# 🙏 Acknowledgment
+
+This project is based on the **MERN-Stack-Projects** repository by **Kunal Tyagi** and has been modified and enhanced with UI improvements, better project organization, optimized backend logic, additional functionality, and an improved user experience.
+
+**Original Repository:**
+
+https://github.com/kunaltyagi9/MERN-Stack-Projects
