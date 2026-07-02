@@ -30,6 +30,10 @@ const newsSchema = new mongoose.Schema({
     publisher: {
         type: String,
         required: true
+    },
+    category: {
+        type: String,
+        default: 'general'
     }
 });
 

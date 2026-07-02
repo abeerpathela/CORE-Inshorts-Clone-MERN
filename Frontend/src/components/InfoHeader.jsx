@@ -1,48 +1,67 @@
-
-import { Box, styled, Typography } from '@mui/material'
-
-
-const Container = styled(Box)(({ theme }) => ({
-    background: '#f44336',
-    color: '#FFFFFF',
-    display: 'flex',
-    alignItems: 'center',
-    height: 48,
-    marginBottom: 30,
-    [theme.breakpoints.down('md')]: {
-        display: 'none'
-    }
-}));
-
-const Image = styled('img')({
-    height: 34,
-    '&:last-child': {
-        margin: '0 50px 0 20px'
-    }
-});
-
-const Text = styled(Typography)`
-        font-size: 14px;
-        font-weight: 300;
-        margin-left: 50px;
-        font-family: 'Roboto',sans-serif;
-    `;
+import React, { useState, useEffect, useContext } from 'react';
+import { Box, Chip, Typography, useTheme } from '@mui/material';
+import { getCategories } from '../service/api';
+import { ThemeContext } from '../App';
 
 const InfoHeader = () => {
-    const appleStore = 'https://assets.inshorts.com/website_assets/images/appstore.png';
-    const googleStore = 'https://assets.inshorts.com/website_assets/images/playstore.png';
+  const [categories, setCategories] = useState([]);
+  const { category, setCategory } = useContext(ThemeContext);
+  const theme = useTheme();
 
-    return (
-        <Container>
-            <Text>
-                For the best experience use <b>inshorts</b> app on your smartphone
-            </Text>
-            <Box style={{ marginLeft: 'auto', display: 'flex' }}>
-                <Image src={appleStore} alt="apple store" />
-                <Image src={googleStore} alt="google store" />
-            </Box>
-        </Container>
-    )
-}
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getCategories();
+        setCategories(['all', ...response.data.categories]);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        setCategories(['all', 'general', 'sports', 'entertainment', 'politics', 'world', 'crime']);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography
+        variant="h4"
+        component="h1"
+        gutterBottom
+        sx={{
+          fontWeight: 800,
+          background: theme.palette.mode === 'light'
+            ? 'linear-gradient(45deg, #1976d2, #dc004e)'
+            : 'linear-gradient(45deg, #90caf9, #f48fb1)',
+          backgroundClip: 'text',
+          textFillColor: 'transparent'
+        }}
+      >
+        Stay Informed
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        color="text.secondary"
+        sx={{ mb: 3 }}
+      >
+        Discover the latest news in 60 words or less
+      </Typography>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+        {categories.map((cat) => (
+          <Chip
+            key={cat}
+            label={cat.charAt(0).toUpperCase() + cat.slice(1)}
+            onClick={() => setCategory(cat === 'all' ? '' : cat)}
+            color={(cat === 'all' && !category) || cat === category ? 'primary' : 'default'}
+            variant={((cat === 'all' && !category) || cat === category) ? 'filled' : 'outlined'}
+            sx={{
+              textTransform: 'capitalize',
+              fontWeight: 600
+            }}
+          />
+        ))}
+      </Box>
+    </Box>
+  );
+};
 
 export default InfoHeader;
